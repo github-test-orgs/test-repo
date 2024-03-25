@@ -24,10 +24,22 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
+      
+      - name: Upload node_modules
+        uses: actions/upload-artifact@v3
+        with:
+          name: node_modules
+          path: node_modules
+
   Build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download node_modules
+        uses: actions/download-artifact@v3
+        with:
+          name: node_modules
+          
       - name: Build project
         run: |
           npm run build
