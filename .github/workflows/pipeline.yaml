@@ -14,12 +14,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         run: |
@@ -32,13 +33,18 @@ jobs:
           path: node_modules
 
   Build:
+    needs: Setup
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download node_modules
-        uses: actions/download-artifact@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          name: node_modules
+          node-version: 20
+          cache: 'npm'
           
       - name: Build project
         run: |
