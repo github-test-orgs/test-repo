@@ -30,6 +30,10 @@ jobs:
         run: |
           npm run build
       
+      - name: Unit test
+        run: |
+          npm run test      
+      
   linting:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -70,7 +74,7 @@ jobs:
         run: |
           npm install
 
-      - name: Lint check
+      - name: Dependency check
         run: |
           npm audit --json > audit.json
           # Check if any high severity vulnerabilities are found
