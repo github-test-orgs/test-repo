@@ -3,7 +3,7 @@ name: Test Pipeline
 on:
   push:
     branches:
-      - master
+      - test
   pull_request:
     branches:
       - master
@@ -25,13 +25,10 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-      
-      - name: Upload node_modules
-        uses: actions/upload-artifact@v3
-        with:
-          name: node_modules
-          path: node_modules
 
+      - name: Zip artifact for deployment
+        run: zip release.zip ./ -r
+      
   Build:
     needs: Setup
     runs-on: ubuntu-latest
@@ -39,6 +36,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: unzip artifact for deployment
+        run: unzip release.zip
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
