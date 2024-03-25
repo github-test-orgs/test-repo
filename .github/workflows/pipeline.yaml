@@ -51,3 +51,32 @@ jobs:
       - name: Lint check
         run: |
           npm run lint
+
+  dependency-check:
+    needs: linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Lint check
+        run: |
+          npm audit --json > audit.json
+          # Check if any high severity vulnerabilities are found
+          if grep -q '"severity":"high"' audit.json; then
+            echo "High severity vulnerabilities found!"
+            exit 1  # Fail the workflow
+          else
+            echo "No high severity vulnerabilities found"
+          fi
