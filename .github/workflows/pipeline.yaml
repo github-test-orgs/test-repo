@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,13 +29,30 @@ jobs:
       - name: Build
         run: |
           npm run build
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install
       
       - name: Unit test
         run: |
           npm run test      
       
   linting:
-    needs: build-and-test
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -57,7 +74,7 @@ jobs:
           npm run lint
 
   dependency-check:
-    needs: linting
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
