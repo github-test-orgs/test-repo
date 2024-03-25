@@ -49,7 +49,7 @@ jobs:
           name: node-app
 
       - name: unzip artifact for setup
-        run: unzip release.zip
+        run: unzip node_modules.zip
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
