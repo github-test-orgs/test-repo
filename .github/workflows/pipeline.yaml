@@ -116,7 +116,7 @@ jobs:
         env:
           MY_KEY: ${{ secrets.MY_KEY }}
         run: |
-          echo "$MY_KEY" > my-key.pem
+          echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
           ls
 
       - name: Connect to VM
