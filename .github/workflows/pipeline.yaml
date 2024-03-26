@@ -115,7 +115,9 @@ jobs:
       - name: Generate .pem key
         env:
           MY_KEY: ${{ secrets.MY_KEY }}
-        run: echo "$MY_KEY" > my-key.pem
+        run: |
+          echo "$MY_KEY" > my-key.pem
+          ls
 
       - name: Connect to VM
         run: |
