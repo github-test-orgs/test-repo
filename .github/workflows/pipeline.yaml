@@ -3,7 +3,7 @@ name: Test Pipeline
 on:
   push:
     branches:
-      - master
+      - new-test
   pull_request:
     branches:
       - master
@@ -107,3 +107,17 @@ jobs:
           else
             echo "No high severity vulnerabilities found"
           fi
+  redeploy:
+    needs: [linting, dependency-check]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate .pem key
+        env:
+          MY_KEY: ${{ secrets.MY_KEY }}
+        run: echo "$MY_KEY" > my-key.pem
+
+      - name: Connect to VM
+        run: |
+          ssh -i "my-key.pem" ubuntu@ec2-3-25-160-63.ap-southeast-2.compute.amazonaws.com
+          echo "Success!"
