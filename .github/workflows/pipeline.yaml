@@ -121,5 +121,5 @@ jobs:
 
       - name: Connect to VM
         run: |
-          sudo ssh -i "my-key.pem" ubuntu@ec2-13-210-109-213.ap-southeast-2.compute.amazonaws.com
+          ssh -i "my-key.pem" ubuntu@ec2-13-210-109-213.ap-southeast-2.compute.amazonaws.com
           echo "Success!"
