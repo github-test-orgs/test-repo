@@ -4,7 +4,7 @@ export default function CustomPage() {
   const unusedVar = 'This variable is unused';
   
   return (
-    <main className="min-h-screen bg-gray-100 text-gray-800 flex flex-col justify-between p-10">
+<main className="min-h-screen bg-gray-100 text-gray-800 flex flex-col justify-between p-10">
       {/* Header */}
       <header className="text-center my-10">
         <h1 className="text-4xl font-bold">Welcome to Your Custom Page</h1>
