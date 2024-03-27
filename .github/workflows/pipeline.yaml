@@ -3,7 +3,7 @@ name: Test Pipeline
 on:
   push:
     branches:
-      - new-test
+      - master
   pull_request:
     branches:
       - master
