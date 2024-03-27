@@ -119,7 +119,7 @@ jobs:
           echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
           ls
 
-      - name: Connect to VM
+      - name: Connect to VM and redeploy
         env:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
