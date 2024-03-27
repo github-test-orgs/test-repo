@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export default function CustomPage() {
-  const unusedVariable = 'This variable is unused';
+  const unusedVar = 'This variable is unused';
   
   return (
     <main className="min-h-screen bg-gray-100 text-gray-800 flex flex-col justify-between p-10">
