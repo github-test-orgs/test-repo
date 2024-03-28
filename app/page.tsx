@@ -5,20 +5,20 @@ export default function CustomPage() {
     <main className="min-h-screen bg-gray-100 text-gray-800 flex flex-col justify-between p-10">
       {/* Header */}
       <header className="text-center my-10">
-        <h1 className="text-4xl font-bold">Welcome to Your Custom Page</h1>
-        <p className="text-lg mt-4">This is a simple Next.js page layout.</p>
+        <h1 className="text-4xl font-bold">Embark on Your Mindfulness Journey</h1>
+        <p className="text-lg mt-4">Discover the path to inner peace and personal growth.</p>
       </header>
 
       {/* Content */}
       <section className="mb-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-semibold mb-5">Why Next.js is awesome:</h2>
+          <h2 className="text-3xl font-semibold mb-5">Why Mindfulness and Meditation Matter:</h2>
           <ul className="list-disc list-inside">
-            <li>Server-side rendering</li>
-            <li>Static site generation</li>
-            <li>API routes</li>
-            <li>Built-in CSS and Sass support</li>
-            <li>And much more...</li>
+            <li>Enhances focus and concentration</li>
+            <li>Reduces stress and anxiety levels</li>
+            <li>Improves emotional health and well-being</li>
+            <li>Supports a stronger immune system</li>
+            <li>Fosters a deeper sense of empathy and connection</li>
           </ul>
         </div>
       </section>
