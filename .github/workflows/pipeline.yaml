@@ -95,7 +95,7 @@ jobs:
           npm install
 
       - name: Dependency check
-        run: bash .github/scripts/my-custom-scripts.sh
+        run: bash .github/scripts/dependency-check.sh
         
   redeploy:
     needs: [linting, dependency-check]
