@@ -3,12 +3,6 @@ name: Test Pipeline
 on:
   push:
     branches:
-<<<<<<< HEAD
-      - test
-  pull_request:
-    branches:
-=======
->>>>>>> 29eb6092f5ab672ca2a0b1ffa66282ba8b97596b
       - master
 
 jobs:
@@ -122,9 +116,9 @@ jobs:
           echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
           ls
 
-      - name: Connect to VM and redeploy
+      - name: Connect to VM
         env:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
         run: |
-          ssh -o StrictHostKeyChecking=no -f -i my-key.pem ${USER_NAME}@${HOST_NAME} "cd Projects/test-repo && chmod +x redeploy.sh && nohup ./redeploy.sh > /dev/null 2>&1 &" && exit $? || exit 1
+          ssh -o StrictHostKeyChecking=no -i my-key.pem ${USER_NAME}@${HOST_NAME} "cd Projects && cd test-repo && chmod&& ./redeploy.sh"
