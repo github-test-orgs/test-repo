@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export default function CustomPage() {  
   return (
     <main className="min-h-screen bg-pink-300 text-green-800 flex flex-col justify-between p-10">
