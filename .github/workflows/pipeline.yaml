@@ -3,9 +3,12 @@ name: Test Pipeline
 on:
   push:
     branches:
+<<<<<<< HEAD
       - test
   pull_request:
     branches:
+=======
+>>>>>>> 29eb6092f5ab672ca2a0b1ffa66282ba8b97596b
       - master
 
 jobs:
