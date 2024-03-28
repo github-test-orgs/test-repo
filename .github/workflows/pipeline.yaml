@@ -81,6 +81,7 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -107,7 +108,6 @@ jobs:
           MY_KEY: ${{ secrets.MY_KEY }}
         run: |
           echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
-          ls
 
       - name: Connect to VM and redeploy
         env:
