@@ -7,7 +7,7 @@ export default function CustomPage() {
           Embrace Nature's Mystery
         </h1>
         <p className="text-xl mt-4 font-semibold italic text-green-600">
-          Reconnect with the Earth and find peace.
+          Reconnect with the Earth and find happiness.
         </p>
       </header>
 
