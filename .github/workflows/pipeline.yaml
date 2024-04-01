@@ -81,6 +81,7 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -95,15 +96,8 @@ jobs:
           npm install
 
       - name: Dependency check
-        run: |
-          npm audit --json > audit.json
-          # Check if any high severity vulnerabilities are found
-          if grep -q '"severity":"high"' audit.json; then
-            echo "High severity vulnerabilities found!"
-            exit 1  # Fail the workflow
-          else
-            echo "No high severity vulnerabilities found"
-          fi
+        run: bash .github/scripts/dependency-check.sh
+        
   redeploy:
     needs: [linting, dependency-check]
     runs-on: ubuntu-latest
@@ -114,7 +108,6 @@ jobs:
           MY_KEY: ${{ secrets.MY_KEY }}
         run: |
           echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
-          ls
 
       - name: Connect to VM
         env:
