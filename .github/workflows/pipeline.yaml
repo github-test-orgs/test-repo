@@ -114,4 +114,4 @@ jobs:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
         run: |
-          ssh -o StrictHostKeyChecking=no -f -i my-key.pem ${USER_NAME}@${HOST_NAME} "cd /var/www/test-repo && sudo chmod +x redeploy.sh && nohup ./redeploy.sh > /dev/null 2>&1 &" && exit $? || exit 1
+          ssh -o StrictHostKeyChecking=no -f -i my-key.pem ${USER_NAME}@${HOST_NAME} "~/.github/scripts/remote-commands.sh" && exit $? || exit 1
