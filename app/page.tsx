@@ -6,6 +6,7 @@ export default function CustomPage() {
         <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-400">
           Embrace Nature's Peace
         </h1>
+        <h1///></h1>
         <p className="text-xl mt-4 font-semibold italic text-green-600">
           Reconnect with the Earth and find happiness.
         </p>
