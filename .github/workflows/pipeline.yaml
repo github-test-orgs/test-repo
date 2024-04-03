@@ -24,8 +24,21 @@ jobs:
           npm install
 
       - name: Build
+        id: build
         run: |
-          npm run build
+          export BUILD_LOG="build_$(date +%Y-%m-%d_%H-%M-%S).log"
+          npm run build 2>&1 | tee "$BUILD_LOG"
+          echo "::set-output name=build_log::$BUILD_LOG"
+
+      - name: Save artifacts
+        env:
+          TENCENT_COS_REGION: ${{ secrets.TENCENT_COS_REGION }}
+          TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
+          TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
+          TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
+          BUILD_LOG: ${{ needs.build.outputs.build_log }}
+        run: |
+          node upload_test.js "$BUILD_LOG" "log/$BUILD_LOG"
 
   test:
     needs: build
