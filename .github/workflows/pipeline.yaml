@@ -36,7 +36,7 @@ jobs:
           TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
           TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
           TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
-          BUILD_LOG: ${{ needs.build.outputs.build_log }}
+          BUILD_LOG: ${{ env.BUILD_LOG }}
         run: |
           node upload_test.js "$BUILD_LOG" "log/$BUILD_LOG"
 
