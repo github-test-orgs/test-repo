@@ -1,4 +1,4 @@
-test('Always pass test', () => {
-  // This test always passes
+test('Always pass/fail test', () => {
+  // This test always passes or fails
   expect(true).toBe(true);
 });
