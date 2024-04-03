@@ -28,7 +28,7 @@ jobs:
         run: |
           export BUILD_LOG="build_$(date +%Y-%m-%d_%H-%M-%S).log"
           npm run build 2>&1 | tee "$BUILD_LOG"
-          echo "::set-output name=build_log::$BUILD_LOG"
+          echo "BUILD_LOG=$BUILD_LOG" >> $GITHUB_ENV
 
       - name: Save artifacts
         env:
