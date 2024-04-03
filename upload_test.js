@@ -47,6 +47,3 @@ fs.readFile(filePath, 'utf8')
   .then(result => {
     console.log('Upload has succeeded');
   })
-  .catch(err => {
-    console.error('Upload has failed');
-  });
