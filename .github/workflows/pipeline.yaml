@@ -28,7 +28,9 @@ jobs:
           npm run build 2>&1 | tee build.log
           exit_code=${PIPESTATUS[0]}
           echo "Build exited with status $exit_code"
-          echo "::set-output name=status::$exit_code"
+          if [ $exit_code -ne 0 ]; then
+            exit $exit_code
+          fi
 
       - name: Save artifacts
         if: always()
