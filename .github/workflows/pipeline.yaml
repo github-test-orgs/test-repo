@@ -26,9 +26,7 @@ jobs:
       - name: Build
         id: build
         run: |
-          export BUILD_LOG="build_$(date +%Y-%m-%d_%H-%M-%S).log"
           npm run build 2>&1 | tee "$BUILD_LOG"
-          echo "BUILD_LOG=$BUILD_LOG" >> $GITHUB_ENV
 
       - name: Save artifacts
         env:
@@ -36,9 +34,8 @@ jobs:
           TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
           TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
           TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
-          BUILD_LOG: ${{ env.BUILD_LOG }}
         run: |
-          node upload_test.js "$BUILD_LOG" "log/$BUILD_LOG"
+          node upload_test.js
 
   test:
     needs: build
