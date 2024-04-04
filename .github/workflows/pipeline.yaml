@@ -33,6 +33,7 @@ jobs:
           exit $status
 
       - name: Save artifacts
+        if: always()
         env:
           TENCENT_COS_REGION: ${{ secrets.TENCENT_COS_REGION }}
           TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
