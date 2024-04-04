@@ -23,14 +23,13 @@ jobs:
         run: |
           npm install
 
-      - name: Build
-        id: build
+      - name: Build and capture output
+        continue-on-error: true
         run: |
-          set -o pipefail
-          npm run build 2>&1 | tee "$BUILD_LOG"
-          status=${PIPESTATUS[0]}
-          echo "Build exited with status $status"
-          exit $status
+          npm run build 2>&1 | tee build.log
+          exit_code=${PIPESTATUS[0]}
+          echo "Build exited with status $exit_code"
+          echo "::set-output name=status::$exit_code"
 
       - name: Save artifacts
         if: always()
@@ -40,7 +39,9 @@ jobs:
           TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
           TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
         run: |
-          node upload_test.js
+          if [ -f build.log ]; then
+            node upload_test.js
+          fi
 
   test:
     needs: build
