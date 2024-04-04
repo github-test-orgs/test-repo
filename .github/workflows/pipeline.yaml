@@ -26,7 +26,11 @@ jobs:
       - name: Build
         id: build
         run: |
-          npm run build 2>&1 | tee "build.log"
+          set -o pipefail
+          npm run build 2>&1 | tee "$BUILD_LOG"
+          status=${PIPESTATUS[0]}
+          echo "Build exited with status $status"
+          exit $status
 
       - name: Save artifacts
         env:
