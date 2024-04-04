@@ -45,5 +45,5 @@ fs.readFile(filePath, 'utf8')
     return uploadToCOS(fileContent, key);
   })
   .then(result => {
-    console.log('Upload has succeeded');
+    console.log('Upload has succeeded at', key);
   })
