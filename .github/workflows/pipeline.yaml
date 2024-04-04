@@ -26,7 +26,7 @@ jobs:
       - name: Build
         id: build
         run: |
-          npm run build 2>&1 | tee "$BUILD_LOG"
+          npm run build 2>&1 | tee "build.log"
 
       - name: Save artifacts
         env:
