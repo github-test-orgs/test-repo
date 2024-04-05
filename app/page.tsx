@@ -8,7 +8,7 @@ export default function CustomPage() {
         </h1>
         <p className="text-xl mt-4 font-semibold italic text-green-600">
           Reconnect with the Earth and find happiness.
-        </p><>>
+        </p>
       </header>
 
       {/* Content */}
