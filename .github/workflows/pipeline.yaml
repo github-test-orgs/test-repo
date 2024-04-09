@@ -114,10 +114,14 @@ jobs:
         run: |
           echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
 
-      - name: Restart sevrver
+      - name: Restart server
         env:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
+          TENCENT_COS_REGION: ${{ secrets.TENCENT_COS_REGION }}
+          TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
+          TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
+          TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
         run: |
           ssh -o StrictHostKeyChecking=no -f -i my-key.pem \
           ${USER_NAME}@${HOST_NAME} "cd /var/www/test-repo && \
