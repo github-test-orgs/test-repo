@@ -3,7 +3,7 @@ export default function CustomPage() {
     <main className="min-h-screen bg-purple-100 text-gray-800 flex flex-col justify-between p-10">
       {/* Header */}
       <header className="text-center my-10">
-        <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-400">
+        <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400">
           Embrace the Night Sky.
         </h1>
         <p className="text-xl mt-4 font-semibold italic text-purple-600">
