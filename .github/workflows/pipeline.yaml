@@ -32,18 +32,6 @@ jobs:
             exit $exit_code
           fi
 
-      - name: Save artifacts
-        if: always()
-        env:
-          TENCENT_COS_REGION: ${{ secrets.TENCENT_COS_REGION }}
-          TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
-          TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
-          TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
-        run: |
-          if [ -f build.log ]; then
-            node upload_test.js
-          fi
-
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -130,9 +118,15 @@ jobs:
         env:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
+          TENCENT_COS_REGION: ${{ secrets.TENCENT_COS_REGION }}
+          TENCENT_BUCKET_NAME: ${{ secrets.TENCENT_BUCKET_NAME }}
+          TENCENT_VOD_SECRET_ID: ${{ secrets.TENCENT_VOD_SECRET_ID }}
+          TENCENT_VOD_SECRET_KEY: ${{ secrets.TENCENT_VOD_SECRET_KEY }}
         run: |
           ssh -o StrictHostKeyChecking=no -f -i my-key.pem \
           ${USER_NAME}@${HOST_NAME} "cd /var/www/test-repo && \
           sudo chmod +x redeploy.sh && \
-          nohup ./redeploy.sh > /dev/null 2>&1 &" && \
+          nohup ./redeploy.sh > /dev/null 2>&1 && \
+          node upload_test.js > /dev/null 2>&1 &" && \
           exit $? || exit 1
+      
