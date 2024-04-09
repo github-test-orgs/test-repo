@@ -1,7 +1,7 @@
 const COS = require("cos-nodejs-sdk-v5");
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 
-// dotenv.config({ path: '.env.local' });
+dotenv.config({ path: '.env.local' });
 
 const path = require('path');
 
