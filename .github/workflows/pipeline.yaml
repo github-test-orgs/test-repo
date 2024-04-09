@@ -114,7 +114,7 @@ jobs:
         run: |
           echo "$MY_KEY" > my-key.pem && chmod 600 my-key.pem
 
-      - name: Connect to VM
+      - name: Restart sevrver
         env:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
@@ -125,7 +125,7 @@ jobs:
           nohup ./redeploy.sh > /dev/null 2>&1 &&" && \
           exit $? || exit 1
       
-      - name: Connect to VM
+      - name: Upload build files
         env:
           HOST_NAME: ${{ secrets.HOST_NAME }}
           USER_NAME: ${{ secrets.USER_NAME }}
