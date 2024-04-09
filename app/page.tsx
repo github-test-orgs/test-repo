@@ -4,7 +4,7 @@ export default function CustomPage() {
       {/* Header */}
       <header className="text-center my-10">
         <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-400">
-          自然とのつながりを取り戻す。
+          New Title.
         </h1>
         <p className="text-xl mt-4 font-semibold italic text-green-600">
           Reconnect with the Earth and find happiness.
