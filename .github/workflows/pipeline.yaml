@@ -126,7 +126,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -f -i my-key.pem \
           ${USER_NAME}@${HOST_NAME} "cd /var/www/test-repo && \
           sudo chmod +x redeploy.sh && \
-          nohup ./redeploy.sh > /dev/null 2>&1 &&" && \
+          nohup ./redeploy.sh > /dev/null 2>&1" && \
           exit $? || exit 1
       
       - name: Upload build files
