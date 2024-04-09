@@ -61,16 +61,13 @@ const uploadFolder = async (localFolderPath, keyPrefix) => {
   }
 };
 
-const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' });
-const currentTimeFormatted = new Date(currentTime).toISOString();
-
 const filePathOrFolderPath = ".next/";
-let key = "log/" + currentTimeFormatted + "/.next";
+let key = "talkwithcicd.asterone.co.jp_build/_next";
 
 const fs = require('fs').promises;
 
 fs.stat(filePathOrFolderPath)
-  .then(uploadFile("build.log", "log/" + currentTimeFormatted + "/build.log"))
+  // .then(uploadFile("build.log", "log/" + currentTimeFormatted + "/build.log"))
   .then(stats => {
     if (stats.isDirectory()) {
       return uploadFolder(filePathOrFolderPath, key);
@@ -78,6 +75,6 @@ fs.stat(filePathOrFolderPath)
       return uploadFile(filePathOrFolderPath, key);
     }
   })
-  .then(result => {
+  .then(() => {
     console.log('Upload has succeeded at', key);
   })
