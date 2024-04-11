@@ -4,7 +4,7 @@ export default function CustomPage() {
       {/* Header */}
       <header className="text-center my-10">
         <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-300">
-          Embrace the Cloudy Night Sky.
+          Embrace the Clouds in the Night Sky.
         </h1>
         <p className="text-xl mt-4 font-semibold italic text-purple-600">
           Discover the magic that awaits under the stars.
