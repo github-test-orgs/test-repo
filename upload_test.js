@@ -78,3 +78,7 @@ fs.stat(filePathOrFolderPath)
   .then(() => {
     console.log('Upload has succeeded at', key);
   })
+  .catch((error) => {
+    console.error('Error during upload:', error);
+    process.exit(1);
+  });
